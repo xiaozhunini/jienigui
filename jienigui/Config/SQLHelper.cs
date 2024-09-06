@@ -43,17 +43,7 @@ namespace WebApplication1.Config
             return Conn;
         }
         #endregion
-
-        #region  增
-
-        #endregion
-        #region  删
-
-        #endregion
-        #region  改
-        #endregion
-
-        #region  查
+        #region   执行sql语句
         //
         // 摘要:
         //     执行语句,返回结果表格DataTable
@@ -88,13 +78,18 @@ namespace WebApplication1.Config
             return dataTable;
         }
         #endregion
+        #region  增
 
-        /// <summary> 
-        /// 执行不带参数的增删改操作 
-        /// </summary> 
-        /// <param name="CmdText">执行的SQL语句或存储过程</param> 
-        /// <param name="CmdType">类型</param> 
-        /// <returns>增删改的操作数</returns> 
+        #endregion
+        #region  删
+
+        #endregion
+        #region  改
+        #endregion
+        # region 查
+        # endregion
+
+
 
 
     }
