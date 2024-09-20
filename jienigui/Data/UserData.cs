@@ -39,5 +39,23 @@ namespace jienigui.Data
 
             return new User();
         }
+
+        internal bool login(User user)
+        {
+            sb.Clear();
+            sb.AppendLine($"select * from db_user where username='{user.UserName}' and password='{user.Password}';");
+            sqlHelper.Open();
+            DataTable dataTable = sqlHelper.ExecuteDataTable(sb.ToString());
+
+            if (dataTable.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            };
+
+        }
     }
 }

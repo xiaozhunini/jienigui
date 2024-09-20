@@ -9,35 +9,51 @@ namespace jienigui.Controllers
     public class UserController : Controller
     {
         private readonly IUserServer UserServer;
-        public UserController(IUserServer userServer) {
+        public UserController(IUserServer userServer)
+        {
             UserServer = userServer;
         }
 
 
+
+        #region 增加
+        #endregion
+        #region 删除
+        #endregion
+        #region 修改
+        #endregion
+        #region 查询
+
         [HttpGet]
-        public ActionResult<User> userlist()
+        public ActionResult<string> login(string username, string password)
+        {
+            if (username == null || password == null)
+            {
+                return "账户密码不能为空";
+            }
+            else
+            {
+                User user = new User();
+                user.UserName = username;
+                user.Password = password;
+                if (UserServer.login(user))
+                {
+                    return Ok();
+                }
+            };
+            return NotFound();
+        }
+
+        [HttpGet]
+        public ActionResult<User> userList()
         {
             return UserServer.userlist();
         }
-        [HttpGet]
-        public ActionResult<List<User>> text()
-        {
-            List<User> list = new List<User>();
-            list.Add(new User()
-            {
-                Id = 1,
-                UserName = "Test",
-                Password = "Test",
-                UserId = 1
-            });
-            list.Add(new User()
-            {
-                Id = 2,
-                UserName = "Test1",
-                Password = "Test1",
-                UserId = 2
-            });
-            return list;
-        }
+
+        #endregion
     }
+
+
+
 }
+

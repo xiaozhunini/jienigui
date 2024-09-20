@@ -9,6 +9,11 @@ namespace jienigui.Server
 {
     public class UserServer:IUserServer
     {
+        public bool login(User user)
+        {
+            UserData userData = new UserData(); 
+            return userData.login(user);
+        }
 
         public User userlist()
         {

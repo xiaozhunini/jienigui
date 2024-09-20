@@ -13,7 +13,6 @@ namespace WebApplication1.Config
         {
             //利用反射连接数据库 
             strConn = AppConfig.ReadAppSettings("strConn");
-            Console.WriteLine(strConn);
             Conn = new SqlConnection(strConn);
         }
         #region 判断数据库连接状态
@@ -59,6 +58,7 @@ namespace WebApplication1.Config
         //     返回结果表格
         public DataTable ExecuteDataTable(string sql, int iTimeOut = 0)
         {
+            Open();
             DataTable dataTable = new DataTable();
             try
             {
@@ -73,10 +73,15 @@ namespace WebApplication1.Config
             catch (SqlException ex)
             {
                 Console.WriteLine("MySqlException Error:" + ex.ToString());
+                Closed();
             }
-
+            Closed();
             return dataTable;
         }
+
+
+
+
         #endregion
         #region  增
 
@@ -87,6 +92,7 @@ namespace WebApplication1.Config
         #region  改
         #endregion
         # region 查
+
         # endregion
 
 
